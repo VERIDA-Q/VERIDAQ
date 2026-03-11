@@ -69,3 +69,5 @@ temp/
 
 # foundry broadcast outputs (deployment metadata)
 packages/contracts/broadcast/
+
+guide.md

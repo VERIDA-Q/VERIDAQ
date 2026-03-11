@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { LogoFull } from "@/components/logo";
 
 /* ─────────────────────────────────────────────
    Custom icon components — handcrafted SVGs
@@ -129,12 +130,7 @@ export default function Home() {
       {/* ── Navigation ── */}
       <header className="border-b border-[#520061]/10 bg-white sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 bg-[#520061] rounded-lg flex items-center justify-center">
-              <ShieldCheck className="w-4 h-4 text-white" />
-            </div>
-            <span className="text-lg font-bold tracking-tight">VERIDAQ</span>
-          </div>
+          <LogoFull />
 
           <nav className="hidden md:flex items-center gap-8">
             <a href="#how-it-works" className="text-sm font-medium text-[#520061]/60 hover:text-[#520061] transition-colors">
@@ -498,12 +494,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-6 py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
             <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center gap-2.5 mb-4">
-                <div className="w-7 h-7 bg-[#520061] rounded-md flex items-center justify-center">
-                  <ShieldCheck className="w-4 h-4 text-white" />
-                </div>
-                <span className="text-base font-bold">VERIDAQ</span>
-              </div>
+              <LogoFull textSize="base" className="mb-4" />
               <p className="text-xs text-[#520061]/50 leading-relaxed max-w-[180px]">
                 Privacy-preserving credential verification for the modern institution.
               </p>

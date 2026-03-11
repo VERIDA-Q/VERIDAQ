@@ -14,6 +14,11 @@ export const metadata: Metadata = {
   description:
     "Privacy-preserving academic credential verification using zero-knowledge proofs on-chain. Trusted by institutions, employers, and individuals.",
   keywords: ["credentials", "verification", "blockchain", "zero-knowledge", "academic"],
+  icons: {
+    icon: "/favicon.svg",
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "VERIDAQ",
     description:
