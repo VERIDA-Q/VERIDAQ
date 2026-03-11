@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
-import { useForm } from "react-hook-form";
+import { useForm, type Resolver } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -27,6 +27,7 @@ import { Input } from "@/components/portal/ui/input";
 import { Label } from "@/components/portal/ui/label";
 import { api } from "@/lib/portal/api";
 import { usePortalStore } from "@/store/portal";
+import { LogoFull } from "@/components/logo";
 
 const schema = z.object({
   email: z.string().email("Enter a valid email address"),
@@ -43,7 +44,7 @@ export default function LoginPage() {
     register,
     handleSubmit,
     formState: { errors, isSubmitting },
-  } = useForm<LoginValues>({ resolver: zodResolver(schema) });
+  } = useForm<LoginValues>({ resolver: zodResolver(schema) as Resolver<LoginValues> });
 
   async function onSubmit(values: LoginValues) {
     try {
@@ -65,12 +66,7 @@ export default function LoginPage() {
     <div className="min-h-screen bg-white flex">
       {/* Left panel — navy brand column */}
       <div className="hidden lg:flex w-[420px] bg-[#520061] flex-col justify-between p-12 shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center">
-            <ShieldCheck className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-lg font-bold text-white tracking-tight">VERIDAQ</span>
-        </div>
+        <LogoFull variant="light" />
         <div>
           <p className="text-2xl font-bold text-white leading-snug mb-3">
             Institution Portal
@@ -87,12 +83,7 @@ export default function LoginPage() {
       <div className="flex-1 flex items-center justify-center px-6">
         <div className="w-full max-w-sm">
           <div className="mb-10">
-            <div className="flex items-center gap-2 mb-6 lg:hidden">
-              <div className="w-7 h-7 bg-[#520061] rounded-md flex items-center justify-center">
-                <ShieldCheck className="w-4 h-4 text-white" />
-              </div>
-              <span className="font-bold text-[#520061]">VERIDAQ</span>
-            </div>
+            <LogoFull className="mb-6 lg:hidden" />
             <h1 className="text-2xl font-bold text-[#520061] tracking-tight mb-1">
               Sign in to your account
             </h1>

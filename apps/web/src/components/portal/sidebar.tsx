@@ -13,10 +13,10 @@ import {
   CreditCard,
   Settings,
   LogOut,
-  ShieldCheck as Logo,
   Menu,
   ChevronRight,
 } from "lucide-react";
+import { LogoMark } from "@/components/logo";
 import { cn } from "@/lib/portal/utils";
 import { usePortalStore } from "@/store/portal";
 import { api } from "@/lib/portal/api";
@@ -79,9 +79,7 @@ export function Sidebar({ collapsed, onCollapse }: { collapsed: boolean; onColla
     >
       {/* Header */}
       <div className="flex items-center h-16 px-4 border-b border-white/10 gap-3">
-        <div className="flex items-center justify-center w-9 h-9 rounded-lg bg-white/10 shrink-0">
-          <Logo className="w-5 h-5 text-white" />
-        </div>
+        <LogoMark className="w-9 h-9 shrink-0" variant="light" />
         {!collapsed && (
           <span className="text-lg font-bold tracking-tight truncate">VERIDAQ</span>
         )}

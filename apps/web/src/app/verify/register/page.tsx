@@ -33,6 +33,7 @@ import { Input } from "@/components/verify/ui/input";
 import { Label } from "@/components/verify/ui/label";
 import { Separator } from "@/components/verify/ui/separator";
 import { employerApi } from "@/lib/verify/api";
+import { LogoMark } from "@/components/logo";
 
 type Values = {
   companyName: string;
@@ -100,10 +101,8 @@ export default function RegisterPage() {
     <div className="min-h-screen flex items-center justify-center bg-white px-4 py-10">
       <div className="w-full max-w-xl">
         <div className="flex flex-col items-center mb-8">
-          <div className="flex items-center justify-center w-14 h-14 rounded-2xl bg-[#520061]/10 mb-3">
-            <ShieldCheck className="w-8 h-8 text-white" />
-          </div>
-          <h1 className="text-2xl font-bold text-white">VERIDAQ</h1>
+          <LogoMark className="w-14 h-14 mb-3" variant="dark" />
+          <h1 className="text-2xl font-bold text-[#520061]">VERIDAQ</h1>
           <p className="text-[#520061]/60 text-sm mt-0.5">Register Your Company</p>
         </div>
 

@@ -13,8 +13,8 @@ import {
   ChevronLeft,
   ChevronRight,
   LogOut,
-  ShieldAlert,
 } from "lucide-react";
+import { LogoMark } from "@/components/logo";
 import { toast } from "sonner";
 import { cn } from "@/lib/console/utils";
 import { adminApi } from "@/lib/console/api";
@@ -56,7 +56,7 @@ export function Sidebar() {
     >
       {/* Logo */}
       <div className={cn("flex items-center gap-2 px-4 py-5 border-b border-white/10", collapsed && "justify-center px-3")}>
-        <ShieldAlert className="w-6 h-6 text-white shrink-0" />
+        <LogoMark className="w-7 h-7 shrink-0" variant="light" />
         {!collapsed && (
           <span className="font-bold text-sm tracking-wide text-white">VERIDAQ</span>
         )}
