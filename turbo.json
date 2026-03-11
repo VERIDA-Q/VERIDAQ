@@ -1,6 +1,26 @@
 {
   "$schema": "https://turbo.build/schema.json",
   "globalDependencies": [".env"],
+  "globalEnv": [
+    "NODE_ENV",
+    "NEXT_PUBLIC_API_URL",
+    "S3_REGION",
+    "CIRCUIT_WASM_PATH",
+    "CIRCUIT_ZKEY_PATH",
+    "VERIFICATION_KEY_PATH",
+    "RPC_URL",
+    "PLATFORM_ADMIN_ADDRESS",
+    "ENTRYPOINT_ADDRESS",
+    "BASESCAN_API_KEY",
+    "INSTITUTION_REGISTRY_ADDRESS",
+    "CREDENTIAL_REGISTRY_ADDRESS",
+    "REVOCATION_REGISTRY_ADDRESS",
+    "PAYMASTER_VAULT_ADDRESS",
+    "SUBSCRIPTION_MANAGER_ADDRESS",
+    "ZK_VERIFIER_ADDRESS",
+    "SMTP_PORT",
+    "EMAIL_FROM"
+  ],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
