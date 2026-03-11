@@ -5,7 +5,9 @@
   "description": "Verified Academic Qualifications. Privacy-preserving credential verification using ZKPs.",
   "scripts": {
     "dev": "turbo run dev",
+    "dev:web": "turbo run dev --filter=@veridaq/web --filter=@veridaq/api",
     "build": "NODE_OPTIONS=--max_old_space_size=8192 turbo run build",
+    "build:web": "NODE_OPTIONS=--max_old_space_size=8192 turbo run build --filter=@veridaq/web",
     "test": "turbo run test",
     "lint": "turbo run lint",
     "simulate:workflow": "node scripts/simulate-workflow.mjs",

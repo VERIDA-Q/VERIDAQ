@@ -15,7 +15,7 @@ import type { FastifyPluginAsync } from "fastify";
 import { z } from "zod";
 import { prisma } from "../db.js";
 import { requireRole } from "../middleware/requireRole.js";
-import { batchQueue } from "../jobs/queue.js";
+import { getBatchQueue } from "../jobs/queue.js";
 
 const updateInstitutionSchema = z.object({
   contactPhone:    z.string().optional(),
@@ -167,7 +167,16 @@ export const institutionRoutes: FastifyPluginAsync = async (fastify) => {
     });
 
     // Push a job into the queue
-    await batchQueue.add("process-batch", { batchId: batch.id, institutionId: user.sub });
+    try {
+      const batchQueue = getBatchQueue();
+      await batchQueue.add("process-batch", { batchId: batch.id, institutionId: user.sub });
+    } catch {
+      return reply.code(503).send({
+        statusCode: 503,
+        error: "Service Unavailable",
+        message: "Batch queue is currently unavailable. Ensure Redis is running and try again.",
+      });
+    }
 
     return reply.code(202).send({
       batchId: batch.id,
