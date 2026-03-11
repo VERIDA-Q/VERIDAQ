@@ -17,14 +17,22 @@ const connection = {
   port: parseInt(new URL(env.REDIS_URL).port || "6379", 10),
 };
 
+let batchQueue: Queue | null = null;
+
 // Batch credential processing queue
 // Jobs: { batchId: string, institutionId: string }
-export const batchQueue = new Queue("credential-batch", {
-  connection,
-  defaultJobOptions: {
-    attempts:    3,
-    backoff:     { type: "exponential", delay: 5000 },
-    removeOnComplete: { count: 100 },
-    removeOnFail:     { count: 200 },
-  },
-});
+export function getBatchQueue() {
+  if (!batchQueue) {
+    batchQueue = new Queue("credential-batch", {
+      connection,
+      defaultJobOptions: {
+        attempts:    3,
+        backoff:     { type: "exponential", delay: 5000 },
+        removeOnComplete: { count: 100 },
+        removeOnFail:     { count: 200 },
+      },
+    });
+  }
+
+  return batchQueue;
+}

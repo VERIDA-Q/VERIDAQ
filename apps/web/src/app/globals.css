@@ -1,0 +1,90 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Core palette: white + navy only */
+    --background: 0 0% 100%;
+    --foreground: 240 46% 14%;       /* navy #1A1A2E */
+
+    --card: 0 0% 100%;
+    --card-foreground: 240 46% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 46% 14%;
+
+    --primary: 240 46% 14%;          /* navy #1A1A2E */
+    --primary-foreground: 0 0% 100%; /* white */
+
+    --secondary: 222 47% 17%;        /* navy-light #16213E */
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 14% 96%;            /* near-white tint */
+    --muted-foreground: 220 9% 46%;
+
+    --accent: 240 46% 14%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 240 46% 14%;
+
+    --radius: 0.5rem;
+
+    /* Status colors (kept for data badges; not used in UI chrome) */
+    --success: #10B981;
+    --danger: #EF4444;
+    --warning: #F59E0B;
+    --pending: #3B82F6;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+
+  /* Reset box shadows globally — no shadows per design spec */
+  *,
+  *::before,
+  *::after {
+    box-shadow: none !important;
+  }
+
+  /* Clean focus ring using navy */
+  *:focus-visible {
+    outline: 2px solid #1A1A2E;
+    outline-offset: 2px;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+}
+
+/* Sidebar transition */
+@layer utilities {
+  .sidebar-transition {
+    transition: width 0.25s ease;
+  }
+}
