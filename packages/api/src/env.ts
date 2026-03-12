@@ -15,10 +15,11 @@ const schema = z.object({
   NODE_ENV:        z.enum(["development", "test", "production"]).default("development"),
   PORT:            z.coerce.number().default(3001),
   LOG_LEVEL:       z.string().default("info"),
-  CORS_ORIGIN:     z.string().default("http://localhost:3000,http://localhost:3002,http://localhost:3003"),
+  CORS_ORIGIN:     z.string().default("http://localhost:3000,http://localhost:3010,http://localhost:3020,http://localhost:3030"),
 
   DATABASE_URL:    z.string().min(1, "DATABASE_URL is required"),
   REDIS_URL:       z.string().default("redis://localhost:6379"),
+  DISABLE_QUEUE:   z.union([z.literal("true"), z.literal("false"), z.boolean()]).optional().transform((value) => value === true || value === "true"),
 
   JWT_SECRET:      z.string().min(32, "JWT_SECRET must be at least 32 chars"),
   JWT_EXPIRES_IN:  z.string().default("7d"),
@@ -55,6 +56,10 @@ const schema = z.object({
   // IPFS / Pinata (for storing encrypted private data)
   PINATA_API_KEY:    z.string().optional(),
   PINATA_SECRET_KEY: z.string().optional(),
+
+  // Platform admin credentials (env-based — no DB table)
+  ADMIN_EMAIL:    z.string().email().default("admin@veridaq.com"),
+  ADMIN_PASSWORD: z.string().min(8).default("VeriAdmin2026!"),
 });
 
 const parsed = schema.safeParse(process.env);
