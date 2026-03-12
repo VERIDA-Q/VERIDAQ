@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useForm, type Resolver } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -49,7 +49,7 @@ export default function SettingsPage() {
     reset: resetProfile,
     formState: { errors: profileErrors, isSubmitting: profileSubmitting, isDirty: profileDirty },
   } = useForm<ProfileValues>({
-    resolver: zodResolver(profileSchema) as Resolver<ProfileValues>,
+    resolver: zodResolver(profileSchema as z.ZodTypeAny),
     defaultValues: {
       name: profile?.name ?? "",
       email: profile?.email ?? "",
@@ -93,7 +93,7 @@ export default function SettingsPage() {
     handleSubmit: handlePwdSubmit,
     reset: resetPwd,
     formState: { errors: pwdErrors, isSubmitting: pwdSubmitting },
-  } = useForm<PasswordValues>({ resolver: zodResolver(passwordSchema) as Resolver<PasswordValues> });
+  } = useForm<PasswordValues>({ resolver: zodResolver(passwordSchema as z.ZodTypeAny) });
 
   async function onPasswordSubmit(values: PasswordValues) {
     if (!token) return;

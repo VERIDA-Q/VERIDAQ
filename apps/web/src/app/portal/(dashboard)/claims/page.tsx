@@ -1,7 +1,7 @@
 "use client";
 
 import * as React from "react";
-import { useForm, type Resolver } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
@@ -68,7 +68,7 @@ function ClaimFormDialog({
     setValue,
     formState: { errors, isSubmitting },
   } = useForm<ClaimValues>({
-    resolver: zodResolver(claimSchema) as Resolver<ClaimValues>,
+    resolver: zodResolver(claimSchema as z.ZodTypeAny),
     defaultValues: {
       claimLabel: existing?.claimLabel ?? "",
       claimType: existing?.claimType ?? "AUTO",
